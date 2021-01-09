@@ -4,18 +4,24 @@ from search import *
 partidas = 0
 async def confirm():
     global battletagf
-    battletag = websocketaw1.find('gen8metronomebattle-')
-    battletag2 = websocketaw1.find('|')
-    battletagf = websocketaw1[battletag:battletag2]
+    battletag = log.find('gen8metronomebattle-')
+    battletag2 = log.find('|')
+    battletagf = log[battletag:battletag2]
     battletagf = battletagf.replace('gen8metronomebattle-', '')
     battletagf = battletagf.strip()
-    await websocket.send(f'battle-gen8metronomebattle-{battletagf}|Hi! Im a bot that plays Metronome Battles. If you find any error, send a PM to the user Gabriel Gottapok with the link for this match.')
-    await timeron()
-async def timeron():
-    await websocket.send(f'battle-gen8metronomebattle-{battletagf}|/timer on')
-    await websocket.send(f'battle-gen8metronomebattle-{battletagf}|/choose default')
-    await ataque()
-async def ataque():
+    await battleon()
+def startmessage():
+   return f'battle-gen8metronomebattle-{battletagf}|Hi! Im a bot that plays Metronome Battles. If you find any error, send a PM to the user Gabriel Gottapok with the link for this match.'
+def choosemove():
+   return f'battle-gen8metronomebattle-{battletagf}|/choose default'
+def timeron():
+   return f'battle-gen8metronomebattle-{battletagf}|/timer on'
+def leave():
+   return f'/noreply |/leave battle-gen8metronomebattle-{battletagf}'
+async def battleon():
+  await websocket.send(timeron())
+  await websocket.send(startmessage())
+  await websocket.send(choosemove())
   while True:
     websocketaw2 = await websocket.recv()
     turn = '|turn|' in websocketaw2
@@ -23,21 +29,21 @@ async def ataque():
     if turn != False:
        c = '|c|' in websocketaw2
        if c != True:
-          await websocket.send(f'battle-gen8metronomebattle-{battletagf}|/choose default')
+          await websocket.send(choosemove())
        else:
           pass
     elif ladderup != False:
-       c = '|c|' in websocketaw2            
+       c = '|c|' in websocketaw2
        if c != True:
           global partidas
           partidas = partidas + 1
-          print(partidas)          
+          print(partidas)
           if partidas == 150:
-             await websocket.send(f'/noreply |/leave battle-gen8metronomebattle-{battletagf}')
+             await websocket.send(leave())
              partidas = 0
              sys.exit()
           else:
-             await websocket.send(f'/noreply |/leave battle-gen8metronomebattle-{battletagf}')
+             await websocket.send(leave())
              await search()
        else:
           pass

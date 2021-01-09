@@ -1,4 +1,10 @@
 from login import *
+def laddersearch():
+    return '|/search gen8metronomebattle'
+def challenge(user):
+    return f'|/challenge {user}, gen8metronomebattle'
+def utm(team):
+    return f'|/utm {team}'
 async def search():
     import awaitbattle
     teams = []
@@ -7,6 +13,6 @@ async def search():
     for ler in read:
         teams.append(ler.strip())
     choice = random.choice(teams)
-    await websocket.send(f'|/utm {choice}')
-    await websocket.send('|/search gen8metronomebattle')
+    await websocket.send(utm(team=choice))
+    await websocket.send(laddersearch())
     await awaitbattle.awaitar()
