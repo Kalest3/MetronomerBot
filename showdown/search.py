@@ -1,4 +1,4 @@
-from login import *
+from showdown.login import *
 from packteams import *
 def laddersearch():
     return '|/search gen8metronomebattle'
@@ -7,7 +7,7 @@ def challenge(user:str):
 def utm(team):
     return f'|/utm {team}'
 async def search():
-    import awaitbattle
+    from battles import awaitbattle
     await websocket.send(utm(team=packed))
-    await websocket.send(challenge(user='gabrielgottapok'))
+    await websocket.send(laddersearch())
     await awaitbattle.awaitar()

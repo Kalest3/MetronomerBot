@@ -27,5 +27,5 @@ async def login():
                 await websocket.send(f'|/trn {username1},164,{assertion}')
                 await websocket.send('|/avatar 164')
                 await websocket.send('|/blockpms')
-                import search
+                import showdown.search as search
                 await search.search()

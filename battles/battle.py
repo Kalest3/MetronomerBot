@@ -1,6 +1,6 @@
-from login import *
-from awaitbattle import *
-from search import *
+from showdown.login import *
+from battles.awaitbattle import *
+from showdown.search import *
 partidas = 0
 async def confirm():
     global battletagf

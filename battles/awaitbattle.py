@@ -1,4 +1,4 @@
-from login import *
+from showdown.login import *
 async def awaitar():
   while True:
     global websocketaw1
@@ -6,6 +6,6 @@ async def awaitar():
     websocketaw1 = await websocket.recv()
     if '|turn|1' in websocketaw1 != False:
         log = websocketaw1
-        import battle
+        import battles.battle as battle
         battle.log = log
         await battle.confirm()
