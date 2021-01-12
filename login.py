@@ -4,9 +4,9 @@ import requests
 import asyncio
 import sys
 import random
-with open(r'username oficial do metronomer.txt') as u:
+with open(r'username.txt') as u:
     username1 = u.read()
-with open(r'senha oficial do metronomer.txt') as p:
+with open(r'password.txt') as p:
     password1 = p.read()
 sys.setrecursionlimit(2000)
 async def connect():

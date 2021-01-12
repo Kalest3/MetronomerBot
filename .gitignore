@@ -1,4 +1,5 @@
-*.txt
+username.txt
+password.txt
 *.log
 Procfile
 metronomerbot
