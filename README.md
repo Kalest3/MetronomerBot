@@ -69,3 +69,10 @@ python run.py
 ```
 
 And the bot is working!
+
+## Bugs/Features
+
+If you want to report a bug that happened during a MetronomerBot battle, contact me on PS (my username is Gabriel Gottapok) or on my Discord (Kaleste#6280).
+The same goes for new features that you would like to see in the bot.
+
+Feel free if you also want to contribute to Metronomer by fixing bugs!
