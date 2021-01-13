@@ -1,6 +1,5 @@
-username.txt
-password.txt
 *.log
 Procfile
 metronomerbot
+config.json
 __pycache__

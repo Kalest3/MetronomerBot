@@ -38,5 +38,5 @@ Hidden Power: Ghost
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
 Brave Nature  
 IVs: 0 Spe  
-- Metronome  """
+- Metronome  """,
 ]
