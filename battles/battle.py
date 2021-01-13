@@ -11,8 +11,6 @@ async def confirm():
     battletagf = battletagf.replace('gen8metronomebattle-', '')
     battletagf = battletagf.strip()
     await battleon()
-def startmessage():
-   return f'battle-gen8metronomebattle-{battletagf}|Hi! Im a bot that plays Metronome Battles. If you find any error, send a PM to the user {username} with the link for this match.'
 def choosemove():
    return f'battle-gen8metronomebattle-{battletagf}|/choose default'
 def timeron():
@@ -21,7 +19,6 @@ def leave():
    return f'/noreply |/leave battle-gen8metronomebattle-{battletagf}'
 async def battleon():
   await websocket.send(timeron())
-  await websocket.send(startmessage())
   await websocket.send(choosemove())
   while True:
     websocketaw2 = await websocket.recv()
