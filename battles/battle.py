@@ -1,6 +1,7 @@
 from showdown.login import *
 from battles.awaitbattle import *
 from showdown.search import *
+from config import *
 partidas = 0
 async def confirm():
     global battletagf
@@ -11,7 +12,7 @@ async def confirm():
     battletagf = battletagf.strip()
     await battleon()
 def startmessage():
-   return f'battle-gen8metronomebattle-{battletagf}|Hi! Im a bot that plays Metronome Battles. If you find any error, send a PM to the user Gabriel Gottapok with the link for this match.'
+   return f'battle-gen8metronomebattle-{battletagf}|Hi! Im a bot that plays Metronome Battles. If you find any error, send a PM to the user {username} with the link for this match.'
 def choosemove():
    return f'battle-gen8metronomebattle-{battletagf}|/choose default'
 def timeron():

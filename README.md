@@ -5,13 +5,7 @@ Discord: Kaleste#6280 || Pokémon Showdown Nick: Gabriel Gottapok
 
 
 
-if you want  contribute to MetronomerBot, you can start by adding new teams;
-
-However, before starting, you must have installed Python version 3.7.7 (since this was the version that MetronomerBot was builded). 
-The bot was not tested on different Python version.
-
-You may already be able to edit the code, as long that you have the forked repository, and have cloned it.
-
+if you want  contribute to MetronomerBot, you can start by adding new teams:
 
 ## Teams
 
@@ -51,3 +45,26 @@ Naive Nature
 - Metronome  """, 
 ]
 ```
+
+## Running
+
+
+If you want to use the bot, you must have installed Python version 3.7.7 (since this was the version that MetronomerBot was builded). The bot was not tested on different Python version.
+
+If you already have Python installed, you can now use the bot.
+
+- First, run
+```bash
+pip install -r requirements.txt
+```
+
+You will now have the two packages you need to run the bot.
+
+- Create a file with the name "config.json" and copy what have in "config_example.json" into it.
+- Inside config.json, in place of My_Username, put the username you want to run the bot. In My_Password, the password. And My_Avatar, the avatar in PS. Save the config.json.
+- To finish, run 
+```bash
+python run.py
+```
+
+And the bot is working!
