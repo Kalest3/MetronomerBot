@@ -58,7 +58,7 @@ If you already have Python installed, you can now use the bot.
 pip install -r requirements.txt
 ```
 
-You will now have the two packages you need to run the bot.
+You will now have the two packages needed for the bot to work.
 
 - Create a file with the name "config.json" and copy what have in "config_example.json" into it.
 - Inside config.json, in place of My_Username, put the username you want to run the bot. In My_Password, the password. And My_Avatar, the avatar in PS. Save the config.json.

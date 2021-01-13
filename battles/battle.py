@@ -1,7 +1,6 @@
 from showdown.login import *
 from battles.awaitbattle import *
 from showdown.search import *
-from config import *
 partidas = 0
 async def confirm():
     global battletagf
