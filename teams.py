@@ -39,4 +39,19 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD
 Brave Nature  
 IVs: 0 Spe  
 - Metronome  """,
+
+"""Blissey @ Leppa Berry  
+Ability: Imposter  
+Hidden Power: Ghost  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Relaxed Nature  
+- Metronome  
+
+Blissey @ Leppa Berry  
+Ability: Imposter  
+Hidden Power: Ghost  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Relaxed Nature  
+IVs: 0 Spe  
+- Metronome  """,
 ]
