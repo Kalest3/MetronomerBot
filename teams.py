@@ -3,7 +3,6 @@ teams = [
 Ability: Friend Guard  
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Brave Nature  
-IVs: 0 Def / 0 SpA  
 - Metronome  
 
 Venusaur-Mega @ Weakness Policy  
