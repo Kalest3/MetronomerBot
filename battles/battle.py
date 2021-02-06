@@ -1,46 +1,36 @@
-from showdown.login import *
-from battles.awaitbattle import *
-from showdown.search import *
-partidas = 0
-async def confirm():
-    global battletagf
-    battletag = log.find('gen8metronomebattle-')
-    battletag2 = log.find('|')
-    battletagf = log[battletag:battletag2]
-    battletagf = battletagf.replace('gen8metronomebattle-', '')
-    battletagf = battletagf.strip()
-    await battleon()
-def choosemove():
-   return f'battle-gen8metronomebattle-{battletagf}|/choose default'
-def timeron():
-   return f'battle-gen8metronomebattle-{battletagf}|/timer on'
-def leave():
-   return f'/noreply |/leave battle-gen8metronomebattle-{battletagf}'
-async def battleon():
-  await websocket.send(timeron())
-  await websocket.send(choosemove())
-  while True:
-    websocketaw2 = await websocket.recv()
-    turn = '|turn|' in websocketaw2
-    ladderup = '||Ladder updating' in websocketaw2
-    if turn != False:
-       c = '|c|' in websocketaw2
-       if c != True:
-          await websocket.send(choosemove())
-       else:
-          pass
-    elif ladderup != False:
-       c = '|c|' in websocketaw2
-       if c != True:
-          global partidas
-          partidas = partidas + 1
-          print(partidas)
-          if partidas == 150:
-             await websocket.send(leave())
-             partidas = 0
-             sys.exit()
-          else:
-             await websocket.send(leave())
-             await search()
-       else:
-          pass
+from string import digits
+from utils.commands.typethis import *
+from packteams import *
+import utils.login as login
+import random
+import teams
+import sys
+battles = 0
+async def search(websocket):
+    team = random.choice(teams.teams)
+    packed = PackTeam(team)
+    await websocket.send(utm(team=packed))
+    await websocket.send(challenge('gabrielgottapok'))
+async def verifyBattle(msg, logCons, websocket):
+    if msg == f'>{logCons}\n|request|':
+        login.battleOn = True
+        await websocket.send(timeron(logCons))
+        await websocket.send(choosemove(logCons))
+async def on_battle(msg, logCons, websocket):
+    splitws = msg.splitlines()
+    if '|upkeep' in splitws != False:
+        splitws.remove('|upkeep')
+    lastmsg = splitws[-1]
+    remove_digits = str.maketrans('', '', digits)
+    lastmsg = lastmsg.translate(remove_digits)
+    if lastmsg == '|turn|':
+        await websocket.send(choosemove(logCons))
+    if lastmsg[0:5] == '|win|':
+        await websocket.send(leave(logCons))
+        global battles
+        battles += 1
+        print(battles)
+        if battles == 80:
+            sys.exit()
+        else:
+            await search(websocket=websocket)
