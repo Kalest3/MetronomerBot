@@ -16,7 +16,7 @@ async def Login(websocket):
     battleOn = False
     while True:
         msg = await websocket.recv()
-        if 'challstr' in msg != False:
+        if msg[0:10] == '|challstr|':
             challstr = msg[0:99999]
             challstr = challstr.replace('|challstr|', '')
             challstr = challstr.strip()
