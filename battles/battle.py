@@ -1,7 +1,7 @@
 from string import digits
+from utils import login
 from utils.commands.typethis import *
 from packteams import *
-import utils.login as login
 import random
 import teams
 import sys
