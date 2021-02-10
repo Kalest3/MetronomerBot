@@ -10,7 +10,7 @@ async def search(websocket):
     team = random.choice(teams.teams)
     packed = PackTeam(team)
     await websocket.send(utm(team=packed))
-    await websocket.send(challenge('gabrielgottapok'))
+    await websocket.send(search(websocket))
 async def verifyBattle(msg, logCons, websocket):
     if msg == f'>{logCons}\n|request|':
         await websocket.send(timeron(logCons))
