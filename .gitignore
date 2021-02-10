@@ -1,5 +1,4 @@
 *.log
-Procfile
 metronomerbot
 config.json
 battlesid.txt
