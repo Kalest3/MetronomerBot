@@ -10,13 +10,13 @@ async def search(websocket):
     team = random.choice(teams.teams)
     packed = PackTeam(team)
     await websocket.send(utm(team=packed))
-    await websocket.send(laddersearch())
+    await websocket.send(challenge('gabrielgottapok'))
 async def verifyBattle(msg, logCons, websocket):
     if msg == f'>{logCons}\n|request|':
-        login.battleOn = True
         await websocket.send(timeron(logCons))
         await websocket.send(choosemove(logCons))
-async def on_battle(msg, logCons, websocket):
+        login.battleOn = True
+async def on_battle(msg, logCons, websocket, battlesid):
     splitws = msg.splitlines()
     if '|upkeep' in splitws != False:
         splitws.remove('|upkeep')
@@ -27,10 +27,9 @@ async def on_battle(msg, logCons, websocket):
         await websocket.send(choosemove(logCons))
     if lastmsg[0:5] == '|win|':
         await websocket.send(leave(logCons))
+        login.battleOn = False
+        battlesid.write(' - CLOSED')
         global battles
         battles += 1
         print(battles)
-        if battles == 80:
-            sys.exit()
-        else:
-            await search(websocket=websocket)
+        await search(websocket=websocket)
