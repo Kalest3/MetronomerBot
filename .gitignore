@@ -1,6 +1,5 @@
 *.log
 metronomerbot
 config.json
-battlesid.txt
 __pycache__
 teste.py

@@ -4,19 +4,18 @@ from utils.commands.typethis import *
 from packteams import *
 import random
 import teams
-import sys
 battles = 0
 async def search(websocket):
     team = random.choice(teams.teams)
     packed = PackTeam(team)
     await websocket.send(utm(team=packed))
-    await websocket.send(search(websocket))
+    await websocket.send(laddersearch())
 async def verifyBattle(msg, logCons, websocket):
     if msg == f'>{logCons}\n|request|':
         await websocket.send(timeron(logCons))
         await websocket.send(choosemove(logCons))
         login.battleOn = True
-async def on_battle(msg, logCons, websocket, battlesid):
+async def on_battle(msg, logCons, websocket):
     splitws = msg.splitlines()
     if '|upkeep' in splitws != False:
         splitws.remove('|upkeep')
@@ -28,7 +27,6 @@ async def on_battle(msg, logCons, websocket, battlesid):
     if lastmsg[0:5] == '|win|':
         await websocket.send(leave(logCons))
         login.battleOn = False
-        battlesid.write(' - CLOSED')
         global battles
         battles += 1
         print(battles)
