@@ -73,7 +73,7 @@ And the bot is working!
 | Command | Do |
 | ------- | ---
 | @spheal | Return "spheal" |
-
+| @commands | Return the link that contains this table you are viewing xD |
 ## Bugs/Features
 
 If you want to report a bug that happened during a MetronomerBot battle, contact me on PS (my username is Gabriel Gottapok) or on my Discord (Kaleste#6280).

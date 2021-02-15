@@ -3,24 +3,10 @@ def PM(userSearch, command: str):
    return f'|pm|{userSearch}|{username}|@{command}'
 def spheal(user: str):
    return f'|/pm {user}, spheal'
-def join(room: str):
-   return f'|/j {room}'
-def leave(room: str):
-   return f'{room}|/part'
+def commands(user: str):
+   return f'|/pm {user}, See my commands in: https://github.com/Kalest3/MetronomerBot/blob/master/README.md#commands'
 async def runall(msg, websocket, userSearch):
    if msg.replace(' ', '').lower() == PM(userSearch, 'spheal'):
       await websocket.send(spheal(user=userSearch))
-   if msg.replace(' ', '') == PM(userSearch, 'join'):
-      if userSearch == owner:
-         roomSearch = msg.find('@join')
-         room = msg[roomSearch:-1]
-         room = room.replace('@join')
-         room = room.strip()
-         await websocket.send(join(room))
-   if msg.replace(' ', '') == PM(userSearch, 'leave'):
-      if userSearch == owner:
-         roomSearch = msg.find('@leave')
-         room = msg[roomSearch:-1]
-         room = room.replace('@leave')
-         room = room.strip()
-         await websocket.send(leave(''))
+   if msg.replace(' ', '').lower() == PM(userSearch, 'commands'):
+      await websocket.send(commands(user=userSearch))
