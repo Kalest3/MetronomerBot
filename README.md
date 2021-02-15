@@ -71,8 +71,9 @@ And the bot is working!
 ## Commands
 
 | Command | Do |
-| ------- | ---
+| ------- | --- |
 | @spheal | Return "spheal" |
+| ------- | ------------------------------------------------------------- |
 | @commands | Return the link that contains this table you are viewing xD |
 ## Bugs/Features
 
