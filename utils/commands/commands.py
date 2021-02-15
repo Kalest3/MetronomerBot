@@ -6,6 +6,12 @@ def spheal(user: str):
 def commands(user: str):
    return f'|/pm {user}, See my commands at: https://github.com/Kalest3/MetronomerBot/blob/master/README.md#commands'
 async def runall(msg, websocket, userSearch):
+   global owner
+   global username
+   owner = owner.replace(' ', '')
+   owner = owner.lower()
+   username = username.replace(' ', '')
+   username = username.lower()
    if msg.replace(' ', '').lower() == PM(userSearch, 'spheal'):
       await websocket.send(spheal(user=userSearch))
    if msg.replace(' ', '').lower() == PM(userSearch, 'commands'):
