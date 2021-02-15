@@ -73,7 +73,6 @@ And the bot is working!
 | Command | Do |
 | ------- | --- |
 | @spheal | Return "spheal" |
-| ------- | ------------------------------------------------------------- |
 | @commands | Return the link that contains this table you are viewing xD |
 ## Bugs/Features
 
