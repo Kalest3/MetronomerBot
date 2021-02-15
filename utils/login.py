@@ -28,6 +28,7 @@ async def onLogin(msg, websocket):
     if '|pm|' in msg:
         userSearch = msg.split('|')[2]
         userSearch = userSearch.replace(' ', '')
+        userSearch = userSearch.lower()
         userSearch = userSearch.strip()
         await runall(msg=msg, websocket=websocket, userSearch=userSearch)
     if '|request|' in msg:
