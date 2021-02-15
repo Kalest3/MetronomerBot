@@ -68,7 +68,7 @@ python run.py
 
 And the bot is working!
 
-## Comands
+## Commands
 
 | Command | Do |
 | ------- | ---
