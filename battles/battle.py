@@ -4,6 +4,7 @@ from utils.commands.typethis import *
 from packteams import *
 import random
 import teams
+
 battles = 0
 async def search(websocket):
     team = random.choice(teams.teams)

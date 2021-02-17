@@ -1,11 +1,10 @@
 import json
 import requests
-import asyncio
-import websockets
 from config import *
 from utils.commands.commands import *
 from utils.commands.typethis import *
 from battles.battle import *
+
 async def Login(websocket):
     global battleOn
     global logCons

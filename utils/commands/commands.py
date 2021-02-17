@@ -1,4 +1,5 @@
 from config import username, owner
+
 def PM(userSearch, command: str):
    return f'|pm|{userSearch}|{username}|@{command}'
 def spheal(user: str):
