@@ -60,7 +60,7 @@ You will now have the packages needed for the bot to work.
 
 - Create a file with the name "config.json".
 - Copy what's in "config_example.json" to "config.json"
-- Inside config.json, in place of My_Username, put the username you want to run the bot code. In My_Password, the password. And My_Avatar, the avatar in PS. In Owner_Username, your username. Save the config.json.
+- Inside config.json, in place of My_Username, put the username you want to run the bot code. In My_Password, the password. And My_Avatar, the avatar in PS. In Owner_Username, your username. In the pokepast link are the default teams used by the bot, but you can change the link if you wanted to use other teams. Save the config.json.
 - To finish, run
 ```bash
 python run.py
@@ -74,6 +74,7 @@ And the bot is working!
 | ------- | --- |
 | @spheal | Return "spheal" |
 | @commands | Return the link that contains this table you are viewing xD |
+| @teams | Return a pokepast with the teams used by the bot. |
 ## Bugs/Features
 
 If you want to report a bug that happened during a MetronomerBot battle, contact me on PS (my username is Gabriel Gottapok) or on my Discord (Kaleste#6280).

@@ -8,3 +8,4 @@ with open('config.json') as json_file:
     avatar = jsondata['avatar']
     owner = jsondata['owner']
     owner = str(owner)
+    teams = jsondata['teams']
