@@ -1,4 +1,5 @@
 *.log
+*.db
 metronomerbot
 config.json
 __pycache__

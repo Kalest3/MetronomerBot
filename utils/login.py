@@ -1,9 +1,18 @@
 import json
 import requests
+import re
 from config import *
-from utils.commands.commands import *
-from utils.commands.typethis import *
-from battles.battle import *
+from typethis import *
+import sqlite3
+
+connectCAL = sqlite3.connect("ChallengesAndLadder.db")
+cursorCAL = connectCAL.cursor()
+
+try:
+    cursorCAL.execute("CREATE TABLE challenge(battleid TEXT)")
+    cursorCAL.execute("CREATE TABLE ladder(battleid TEXT)")
+except:
+    pass
 
 async def Login(websocket):
     global battleOn
@@ -33,35 +42,46 @@ async def Login(websocket):
                             jsonMSGloaded = json.loads(jsonMSG)
                             games = jsonMSGloaded["games"]
                             games = str(games)
-                            if games == "None":
-                                Reconnected = False
-                                await search(websocket=websocket)
-                            else:
-                                startSearch = games.find("'", 1)
-                                endSearch = games.find("'", 2)
-                                battle = games[startSearch:endSearch]
-                                battle = battle.replace("'", '')
-                                await websocket.send(f'|/join {battle}')
-                                logCons = battle
+                            if games != "None":
+                                games = games.split("[Gen 8] Metronome Battle")
+                                for item in games:
+                                    itemOnlyAlnum = re.sub(r'\W+', '', item)
+                                    if itemOnlyAlnum[0:25] == "battlegen8metronomebattle":
+                                        await websocket.send(f"|/j battle-gen8metronomebattle-{itemOnlyAlnum[25:]}")
                                 battleOn = True
                                 Reconnected = True
+                            else:
+                                Reconnected = False
+                            cursorCAL.execute("SELECT * FROM ladder")
+                            if len(cursorCAL.fetchall()) >= 1:
+                                pass
+                            else:
+                                import battles.battle
+                                await battles.battle.search(websocket)
                             loginDone = True
                             break
                 break
+
         if loginDone != False:
             await onLogin(msg=msg, websocket=websocket)
+
 async def onLogin(msg, websocket):
+    global battleOn
     if '|pm|' in msg:
         userSearch = msg.split('|')[2]
         userSearch = userSearch.replace(' ', '')
         userSearch = userSearch.lower()
         userSearch = userSearch.strip()
-        await runall(msg=msg, websocket=websocket, userSearch=userSearch)
+        import utils.commands.commands as command
+        await command.runall(msg=msg, websocket=websocket, userSearch=userSearch)
     if '|request|' in msg and battleOn == False:
-        global logCons
-        logConsSearch = msg.find('battle-gen8metronomebattle')
-        logConsSearch2 = msg.find('\n')
-        logCons = msg[logConsSearch:logConsSearch2]
-        await verifyBattle(msg, logCons, websocket)
+        if msg[0:7] == ">battle":
+            battleOn = True
     if battleOn == True:
-        await on_battle(msg, logCons, websocket)
+        import battles.battle
+        await battles.battle.on_battle(msg, websocket)
+    if len(msg.split("|")) > 4:
+        if msg.split("|")[4] == "/challenge gen8metronomebattle":
+            import battles.battle
+            await utm(websocket, battles.battle.teamChoice())
+            await accept(websocket, msg.split("|")[2])

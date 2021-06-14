@@ -1,11 +1,11 @@
 teams = [
-"""Venusaur-Mega @ Weakness Policy  
+"""UTBlack (Venusaur-Mega) @ Weakness Policy  
 Ability: Friend Guard  
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Brave Nature  
 - Metronome  
 
-Venusaur-Mega @ Weakness Policy  
+UTBlack (Venusaur-Mega) @ Weakness Policy  
 Ability: Friend Guard  
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Brave Nature  

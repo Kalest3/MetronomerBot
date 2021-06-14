@@ -6,6 +6,3 @@ with open('config.json') as json_file:
     username = str(username)
     password = jsondata['password']
     avatar = jsondata['avatar']
-    owner = jsondata['owner']
-    owner = str(owner)
-    teams = jsondata['teams']
