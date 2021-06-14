@@ -21,9 +21,11 @@ async def Login(websocket):
     loginDone = False
     battleOn = False
     logCons = None
+
     while True:
         msg = await websocket.recv()
         msg = str(msg)
+
         if msg[0:10] == '|challstr|':
             challstr = msg[0:99999]
             challstr = challstr.replace('|challstr|', '')
@@ -32,16 +34,19 @@ async def Login(websocket):
             assertion = json.loads(postlogin.text[1:])["assertion"]
             await websocket.send(f'|/trn {username},0,{assertion}')
             await websocket.send(f'|/avatar {avatar}')
+
             while True:
                 msg = await websocket.recv()
                 if '|updatesearch|' in msg:
                     while True:
                         msg = await websocket.recv()
+
                         if '|updatesearch|' in msg:
                             jsonMSG = msg.replace('|updatesearch|', '')
                             jsonMSGloaded = json.loads(jsonMSG)
                             games = jsonMSGloaded["games"]
                             games = str(games)
+
                             if games != "None":
                                 games = games.split("[Gen 8] Metronome Battle")
                                 for item in games:
@@ -50,11 +55,14 @@ async def Login(websocket):
                                         await websocket.send(f"|/j battle-gen8metronomebattle-{itemOnlyAlnum[25:]}")
                                 battleOn = True
                                 Reconnected = True
+
                             else:
                                 Reconnected = False
                             cursorCAL.execute("SELECT * FROM ladder")
+
                             if len(cursorCAL.fetchall()) >= 1:
                                 pass
+
                             else:
                                 import battles.battle
                                 await battles.battle.search(websocket)
@@ -67,6 +75,7 @@ async def Login(websocket):
 
 async def onLogin(msg, websocket):
     global battleOn
+
     if '|pm|' in msg:
         userSearch = msg.split('|')[2]
         userSearch = userSearch.replace(' ', '')
@@ -74,12 +83,15 @@ async def onLogin(msg, websocket):
         userSearch = userSearch.strip()
         import utils.commands.commands as command
         await command.runall(msg=msg, websocket=websocket, userSearch=userSearch)
+
     if '|request|' in msg and battleOn == False:
         if msg[0:7] == ">battle":
             battleOn = True
+
     if battleOn == True:
         import battles.battle
         await battles.battle.on_battle(msg, websocket)
+
     if len(msg.split("|")) > 4:
         if msg.split("|")[4] == "/challenge gen8metronomebattle":
             import battles.battle
