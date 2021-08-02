@@ -43,7 +43,7 @@ async def Login(websocket):
                                 Reconnected = True
 
                             else:
-                                battle.search(websocket)
+                                await battle.search(websocket)
                                 Reconnected = False
 
                             loginDone = True
