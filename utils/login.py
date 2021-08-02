@@ -21,6 +21,7 @@ async def Login(websocket):
             assertion = json.loads(postlogin.text[1:])["assertion"]
             await websocket.send(f'|/trn {username},0,{assertion}')
             await websocket.send(f'|/avatar {avatar}')
+            import battles.battle as battle
             while True:
                 msg = await websocket.recv()
                 if '|updatesearch|' in msg:
@@ -42,7 +43,6 @@ async def Login(websocket):
                                 Reconnected = True
 
                             else:
-                                import battles.battle as battle
                                 battle.search(websocket)
                                 Reconnected = False
 
@@ -52,10 +52,9 @@ async def Login(websocket):
                 break
 
         if loginDone != False:
-            await onLogin(msg=msg, websocket=websocket)
+            await onLogin(msg=msg, websocket=websocket, battle=battle)
 
-async def onLogin(msg, websocket):
+async def onLogin(msg, websocket, battle):
 
     if msg[0:28] == ">battle-gen8metronomebattle-":
-        import battles.battle as battle
         await battle.on_battle(msg, websocket)
