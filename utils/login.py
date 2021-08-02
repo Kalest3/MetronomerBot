@@ -1,20 +1,8 @@
 import json
 import requests
 import re
-import sqlite3
 from config import *
 from typethis import *
-
-connectCAL = sqlite3.connect("ChallengesAndLadder.db")
-cursorCAL = connectCAL.cursor()
-
-try:
-    cursorCAL.execute("CREATE TABLE challengeActives(battleid TEXT)")
-    cursorCAL.execute("CREATE TABLE ladderActives(battleid TEXT)")
-    cursorCAL.execute("CREATE TABLE challenge(battleid TEXT)")
-    cursorCAL.execute("CREATE TABLE ladder(battleid TEXT)")
-except:
-    pass
 
 async def Login(websocket):
     global logCons
@@ -54,14 +42,10 @@ async def Login(websocket):
                                 Reconnected = True
 
                             else:
+                                import battles.battle as battle
+                                battle.search(websocket)
                                 Reconnected = False
 
-                            cursorCAL.execute("SELECT * FROM ladderActives")
-                            if len(cursorCAL.fetchall()) > 0:
-                                pass
-                            else:
-                                import battles.battle
-                                await battles.battle.search(websocket)
                             loginDone = True
         
                             break
@@ -71,14 +55,7 @@ async def Login(websocket):
             await onLogin(msg=msg, websocket=websocket)
 
 async def onLogin(msg, websocket):
-    global battleOn
 
     if msg[0:28] == ">battle-gen8metronomebattle-":
-        import battles.battle
-        await battles.battle.on_battle(msg, websocket, cursorCAL, connectCAL)
-
-    if len(msg.split("|")) > 4:
-        if msg.split("|")[4] == "/challenge gen8metronomebattle":
-            import battles.battle
-            await utm(websocket, battles.battle.teamChoice())
-            await accept(websocket, msg.split("|")[2])
+        import battles.battle as battle
+        await battle.on_battle(msg, websocket)

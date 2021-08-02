@@ -47,7 +47,7 @@ Naive Nature
 ## Running
 
 
-If you want to use the bot, you must have installed Python version 3.7.7 (since this was the version that MetronomerBot was builded). The bot was not tested on different Python version.
+If you want to use the bot, you must have installed Python 3.7 or higher (since this was the version that MetronomerBot was builded).
 
 If you already have Python installed, you can now use the bot.
 
