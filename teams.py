@@ -53,4 +53,28 @@ EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD
 Relaxed Nature  
 IVs: 0 Spe  
 - Metronome  """,
+
+"""Heracross-Mega @ Choice Band  
+Ability: Intrepid Sword  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  
+
+Heracross-Mega @ Choice Band  
+Ability: Intrepid Sword  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  """,
+
+"""Abomasnow-Mega @ Weakness Policy  
+Ability: Flash Fire  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Brave Nature  
+- Metronome  
+
+Venusaur-Mega @ Weakness Policy  
+Ability: Flower Veil  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Quiet Nature  
+- Metronome  """,
 ]
