@@ -13,6 +13,7 @@ async def Login(websocket):
     while True:
         msg = await websocket.recv()
         msg = str(msg)
+        print(msg)
         if msg[0:10] == '|challstr|':
             challstr = msg[0:99999]
             challstr = challstr.replace('|challstr|', '')
