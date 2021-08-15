@@ -3,7 +3,7 @@ A Bot that likes to play Metronome Battle in Pokémon Showdown.
 
 Discord: Kaleste#6280 || Pokémon Showdown Nick: Gabriel Gottapok
 
-if you want contribute to MetronomerBot, you can start by adding new teams:
+if you want contribute to MetronomerBot, you can start adding new teams:
 
 ## Teams
 
@@ -59,7 +59,7 @@ pip install -r requirements.txt
 You will now have the packages needed for the bot to work.
 
 - Create a file with the name "config.json".
-- Copy what's in "config_example.json" to "config.json"
+- Copy what's in "config-example.json" to "config.json"
 - Inside config.json, in place of My_Username, put the username you want to run the bot code. In My_Password, the password. And My_Avatar, the avatar in PS. Save the config.json.
 - To finish, run
 ```bash

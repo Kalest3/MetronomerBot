@@ -1,34 +1,34 @@
 from string import digits
-from utils import login
 from typethis import *
+from utils import login
 
 async def search(websocket):
     await utm(websocket, teamChoice())
     await laddersearch(websocket)
 
 async def on_battle(msg, websocket):
-    logConsSearch = msg.find('battle-gen8metronomebattle')
-    logConsSearch2 = msg.find('\n')
-    logCons = msg[logConsSearch:logConsSearch2]
+    battleIDsearch = msg.find('battle-gen8metronomebattle')
+    battleIDsearch2 = msg.find('\n')
+    battleID = msg[battleIDsearch:battleIDsearch2]
 
-    if msg == f'>{logCons}\n|request|':
-        await timeron(websocket, logCons)
-        await choosemove(websocket, logCons)
     splitws = msg.splitlines()
-
-    if '|upkeep' in splitws != False:
+    if '|upkeep' in splitws:
         splitws.remove('|upkeep')
     lastmsg = splitws[-1]
     remove_digits = str.maketrans('', '', digits)
     lastmsgWithoutDigits = lastmsg.translate(remove_digits)
 
+    if msg == f'>{battleID}\n|request|':
+        await timeron(websocket, battleID)
+        await choosemove(websocket, battleID)
+
+    if login.Reconnected:
+        await choosemove(websocket, battleID)
+        login.Reconnected = False
+
     if lastmsgWithoutDigits == '|turn|':
-        await choosemove(websocket, logCons)
+        await choosemove(websocket, battleID)
 
     if lastmsgWithoutDigits[0:5] == '|win|':
-        await leave(websocket, logCons)
+        await leave(websocket, battleID)
         await search(websocket)
-
-    if login.Reconnected == True:
-        await choosemove(websocket, logCons)
-        login.Reconnected = False

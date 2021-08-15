@@ -1,4 +1,3 @@
-import showdown
 import random
 import teams
 from packteams import *
@@ -17,14 +16,11 @@ async def laddersearch(websocket):
 async def challenge(websocket, user):
     return await websocket.send(f'|/challenge {user}, gen8metronomebattle')
 
-async def accept(websocket, user):
-    return await websocket.send(f'|/accept {showdown.utils.name_to_id(user)}')
+async def choosemove(websocket, battleID):
+    return await websocket.send(f'{battleID}|/choose default')
 
-async def choosemove(websocket, logCons):
-    return await websocket.send(f'{logCons}|/choose default')
+async def timeron(websocket, battleID):
+    return await websocket.send(f'{battleID}|/timer on')
 
-async def timeron(websocket, logCons):
-    return await websocket.send(f'{logCons}|/timer on')
-
-async def leave(websocket, logCons):
-    return await websocket.send(f'/noreply |/leave {logCons}')
+async def leave(websocket, battleID):
+    return await websocket.send(f'/noreply |/leave {battleID}')

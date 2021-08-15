@@ -5,15 +5,13 @@ from config import *
 from typethis import *
 
 async def Login(websocket):
-    global logCons
     global Reconnected
     loginDone = False
-    logCons = None
+    Reconnected = False
 
     while True:
         msg = await websocket.recv()
         msg = str(msg)
-        print(msg)
         if msg[0:10] == '|challstr|':
             challstr = msg[0:99999]
             challstr = challstr.replace('|challstr|', '')
@@ -28,7 +26,6 @@ async def Login(websocket):
                 if '|updatesearch|' in msg:
                     while True:
                         msg = await websocket.recv()
-
                         if '|updatesearch|' in msg:
                             jsonMSG = msg.replace('|updatesearch|', '')
                             jsonMSGloaded = json.loads(jsonMSG)
@@ -42,15 +39,11 @@ async def Login(websocket):
                                     if itemOnlyAlnum[0:25] == "battlegen8metronomebattle":
                                         await websocket.send(f"|/j battle-gen8metronomebattle-{itemOnlyAlnum[25:]}")
                                 Reconnected = True
-
                             else:
                                 await battle.search(websocket)
-                                Reconnected = False
-
-                            loginDone = True
-        
                             break
-                break
+                    break
+            loginDone = True
 
         if loginDone != False:
             await onLogin(msg=msg, websocket=websocket, battle=battle)
