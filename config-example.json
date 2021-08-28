@@ -1,5 +1,6 @@
 {
     "username":"My_Username",
     "password":"My_Password",
-    "avatar":"My_Avatar"
+    "avatar":"My_Avatar",
+    "enableLogs":true
 }

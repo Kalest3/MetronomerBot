@@ -1,6 +1,13 @@
+import json
 from string import digits
 from typethis import *
-from utils import login
+
+async def reconnectToBattle(msg, websocket):
+    if msg[0:87] == '|updatesearch|{"searching":["gen8metronomebattle"],"games":{"battle-gen8metronomebattle':
+        await websocket.send("|/cancelsearch")
+        games = json.loads(msg.replace("|updatesearch|", ""))['games']
+        for game in games:
+            await websocket.send(f"|/join {game}")
 
 async def search(websocket):
     await utm(websocket, teamChoice())
@@ -21,10 +28,6 @@ async def on_battle(msg, websocket):
     if msg == f'>{battleID}\n|request|':
         await timeron(websocket, battleID)
         await choosemove(websocket, battleID)
-
-    if login.Reconnected:
-        await choosemove(websocket, battleID)
-        login.Reconnected = False
 
     if lastmsgWithoutDigits == '|turn|':
         await choosemove(websocket, battleID)

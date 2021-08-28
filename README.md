@@ -60,7 +60,7 @@ You will now have the packages needed for the bot to work.
 
 - Create a file with the name "config.json".
 - Copy what's in "config-example.json" to "config.json"
-- Inside config.json, in place of My_Username, put the username you want to run the bot code. In My_Password, the password. And My_Avatar, the avatar in PS. Save the config.json.
+- Inside config.json, in place of My_Username, put the username you want to run the bot code. In My_Password, the password. In My_Avatar, the avatar in PS. You can decide whether you want the program show the bot console logs or not, at "enableLogs". If you want, keep the value "true", otherwise delete and put "false". Save the config.json.
 - To finish, run
 ```bash
 python run.py
