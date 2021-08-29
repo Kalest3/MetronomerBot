@@ -3,11 +3,19 @@ from string import digits
 from typethis import *
 
 async def reconnectToBattle(msg, websocket):
-    if msg[0:87] == '|updatesearch|{"searching":["gen8metronomebattle"],"games":{"battle-gen8metronomebattle':
-        await websocket.send("|/cancelsearch")
-        games = json.loads(msg.replace("|updatesearch|", ""))['games']
+    while msg[0:14] != "|updatesearch|":
+        msg = await websocket.recv()
+    await websocket.send("|/cancelsearch")
+    msg = await websocket.recv()
+    while msg[0:14] != "|updatesearch|":
+        msg = await websocket.recv()
+    games = json.loads(msg.replace("|updatesearch|", ""))['games']
+    if games:
         for game in games:
             await websocket.send(f"|/join {game}")
+            await choosemove(websocket, game)
+    else:
+        await search(websocket)
 
 async def search(websocket):
     await utm(websocket, teamChoice())
@@ -18,10 +26,10 @@ async def on_battle(msg, websocket):
     battleIDsearch2 = msg.find('\n')
     battleID = msg[battleIDsearch:battleIDsearch2]
 
-    splitws = msg.splitlines()
-    if '|upkeep' in splitws:
-        splitws.remove('|upkeep')
-    lastmsg = splitws[-1]
+    splitmsg = msg.splitlines()
+    if '|upkeep' in splitmsg:
+        splitmsg.remove('|upkeep')
+    lastmsg = splitmsg[-1]
     remove_digits = str.maketrans('', '', digits)
     lastmsgWithoutDigits = lastmsg.translate(remove_digits)
 

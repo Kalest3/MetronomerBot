@@ -19,15 +19,11 @@ async def Login(websocket):
             assertion = json.loads(postlogin.text[1:])["assertion"]
             await websocket.send(f'|/trn {username},0,{assertion}')
             await websocket.send(f'|/avatar {avatar}')
+            await battle.reconnectToBattle(msg, websocket)
             loginDone = True
 
-            await battle.search(websocket)
-            while msg[0:50] != '|updatesearch|{"searching":["gen8metronomebattle"]':
-                msg = await websocket.recv()
-            await battle.reconnectToBattle(msg, websocket)
-
         if loginDone:
-            await afterLogin(msg=msg, websocket=websocket)
+            await afterLogin(msg, websocket)
 
 async def afterLogin(msg, websocket):
     if msg[0:28] == ">battle-gen8metronomebattle-":
