@@ -13,7 +13,6 @@ async def reconnectToBattle(msg, websocket):
     if games:
         for game in games:
             await websocket.send(f"|/join {game}")
-            await choosemove(websocket, game)
     else:
         await search(websocket)
 
@@ -22,24 +21,25 @@ async def search(websocket):
     await laddersearch(websocket)
 
 async def on_battle(msg, websocket):
+    newTurn = False
+    battleEnd = False
     battleIDsearch = msg.find('battle-gen8metronomebattle')
     battleIDsearch2 = msg.find('\n')
     battleID = msg[battleIDsearch:battleIDsearch2]
-
-    splitmsg = msg.splitlines()
-    if '|upkeep' in splitmsg:
-        splitmsg.remove('|upkeep')
-    lastmsg = splitmsg[-1]
-    remove_digits = str.maketrans('', '', digits)
-    lastmsgWithoutDigits = lastmsg.translate(remove_digits)
 
     if msg == f'>{battleID}\n|request|':
         await timeron(websocket, battleID)
         await choosemove(websocket, battleID)
 
-    if lastmsgWithoutDigits == '|turn|':
+    splitmsg = msg.splitlines()
+    for line in splitmsg:
+        print(line)
+        if line[0:6] == "|turn|":
+            newTurn = True
+        if line[0:5] == "|win|":
+            battleEnd = True
+    if newTurn: 
         await choosemove(websocket, battleID)
-
-    if lastmsgWithoutDigits[0:5] == '|win|':
-        await leave(websocket, battleID)
+    if battleEnd: 
+        await leave(websocket, battleID) 
         await search(websocket)
