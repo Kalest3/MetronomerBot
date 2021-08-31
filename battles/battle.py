@@ -33,7 +33,6 @@ async def on_battle(msg, websocket):
 
     splitmsg = msg.splitlines()
     for line in splitmsg:
-        print(line)
         if line[0:6] == "|turn|":
             newTurn = True
         if line[0:5] == "|win|":
