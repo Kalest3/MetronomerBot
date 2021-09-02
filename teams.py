@@ -77,4 +77,44 @@ Ability: Flower Veil
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Quiet Nature  
 - Metronome  """,
+
+"""Type: Null @ Eviolite
+Ability: Friend Guard
+Shiny: Yes
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Metronome
+
+Dusclops @ Eviolite
+Ability: Friend Guard
+Shiny: Yes
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD
+Relaxed Nature
+IVs: 0 Spe
+- Metronome""",
+
+"""Ampharos-Mega @ Choice Specs  
+Ability: Competitive  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Quiet Nature  
+- Metronome  
+
+Heracross-Mega @ Choice Band  
+Ability: Intrepid Sword  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome""",
+
+"""Shaymin @ Weakness Policy  
+Ability: Simple  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  
+
+Venusaur-Mega @ Weakness Policy  
+Ability: Flower Veil  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Quiet Nature  
+- Metronome""",
 ]
