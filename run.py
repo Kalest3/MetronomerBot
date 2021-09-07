@@ -5,6 +5,8 @@ from utils.login import Login
 uri = 'ws://sim.smogon.com:8000/showdown/websocket'
 
 async def run():
+    """Connect the script to Pokémon Showdown
+    """ 
     async with websockets.connect(uri) as websocket:
         await Login(websocket)
 

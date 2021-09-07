@@ -3,6 +3,11 @@ from string import digits
 from typethis import *
 
 async def reconnectToBattle(msg, websocket):
+    """If the bot was in a battle but it was disconnected from the server,
+    he will join to the battle again.
+
+    websocket.send("|/cancelsearch"): This ensures that at least two '|updatesearch|' will be received.
+    """
     while msg[0:14] != "|updatesearch|":
         msg = await websocket.recv()
     await websocket.send("|/cancelsearch")
