@@ -10,14 +10,14 @@ async def Login(websocket):
         msg = str(await websocket.recv())
 
         if enablelogs:
-            """Print the console messages
+            """Prints the console messages
             """
             print(msg)
 
         if msg[0:10] == '|challstr|':
             """Login into the Pokémon Showdown Server
             """
-            challstr = msg[0:99999].replace("|challstr|", '').strip()
+            challstr = msg[10:]
             postlogin = requests.post('https://play.pokemonshowdown.com/~~showdown/action.php', data={'act':'login','name':username,'pass':password,'challstr':challstr})
             assertion = json.loads(postlogin.text[1:])["assertion"]
             await websocket.send(f'|/trn {username},0,{assertion}')
