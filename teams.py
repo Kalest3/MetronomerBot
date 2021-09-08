@@ -117,4 +117,40 @@ Ability: Flower Veil
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Quiet Nature  
 - Metronome""",
+
+"""Glastrier @ Weakness Policy  
+Ability: Prism Armor  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  
+
+Glastrier @ Weakness Policy  
+Ability: Prism Armor  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  """,
+
+"""Kommo-o @ Weakness Policy  
+Ability: Friend Guard  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  
+
+Kommo-o @ Weakness Policy  
+Ability: Friend Guard  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome  """,
+
+"""Camerupt-Mega @ Choice Specs  
+Ability: Storm Drain  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Quiet Nature  
+- Metronome  
+
+Venusaur-Mega @ Weakness Policy  
+Ability: Prism Armor  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Quiet Nature  
+- Metronome  """,
 ]
