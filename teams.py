@@ -153,4 +153,57 @@ Ability: Prism Armor
 EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
 Quiet Nature  
 - Metronome  """,
+
+"""Sableye-Mega @ Bright Powder  
+Ability: Magic Bounce  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  Relaxed Nature  
+IVs: 0 Spe  
+- Metronome  
+
+Sableye-Mega @ Bright Powder  
+Ability: Magic Bounce  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Sassy Nature  
+IVs: 0 Spe  
+- Metronome  """,
+
+"""Camerupt-Mega @ Choice Specs  
+Ability: Desolate Land  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Brave Nature  
+- Metronome  
+
+Cherrim @ Weakness Policy  
+Ability: Flower Gift  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD / 252 Spe  
+Brave Nature  
+- Metronome""",
+
+"""Type: Null @ Eviolite  
+Ability: Anger Point  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Relaxed Nature  
+IVs: 0 Spe  
+- Metronome  
+
+Dusclops @ Eviolite  
+Ability: Friend Guard  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Relaxed Nature  
+IVs: 0 Spe  
+- Metronome""",
+
+"""Ampharos-Mega @ Choice Specs  
+Ability: Plus  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Quiet Nature  
+IVs: 0 Spe  
+- Metronome  
+
+Ampharos-Mega @ Weakness Policy  
+Ability: Minus  
+EVs: 252 HP / 252 Atk / 252 Def / 252 SpA / 252 SpD  
+Quiet Nature  
+IVs: 0 Spe  
+- Metronome""",
 ]
